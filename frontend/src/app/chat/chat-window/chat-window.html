@@ -1,0 +1,90 @@
+ 
+<div class="chat-container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+     
+       
+
+
+      <div class="sidebar-header">
+  <h2>🤖 AI Chatbot</h2>
+  <button mat-raised-button color="primary" (click)="newChat()">
+    + New Chat
+  </button>
+  <button mat-button routerLink="/dashboard" class="dashboard-btn">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </button>
+  <button mat-button routerLink="/plans" class="plans-btn">
+    <mat-icon>star</mat-icon> Plans
+  </button>
+</div>
+    
+
+    <div class="conversation-list">
+      @for (conv of conversations; track conv.id) {
+        <div
+          class="conversation-item"
+          [class.active]="conv.id === currentConversationId"
+          (click)="selectConversation(conv.id)">
+          💬 {{ conv.title }}
+        </div>
+      }
+    </div>
+
+    <div class="sidebar-footer">
+      <button mat-button (click)="logout()">
+        <mat-icon>logout</mat-icon> Logout
+      </button>
+    </div>
+  </div>
+
+  <!-- Chat Area -->
+  <div class="chat-area">
+
+    @if (!currentConversationId) {
+      <div class="empty-state">
+        <h2>Welcome to AI Chatbot! 🤖</h2>
+        <p>Click "New Chat" to start a conversation</p>
+      </div>
+    }
+
+    @if (currentConversationId) {
+      <div class="messages-container">
+        @for (msg of messages; track $index) {
+          <div class="message" [class.user-message]="msg.role === 'user'"
+               [class.ai-message]="msg.role === 'assistant'">
+            <div class="message-bubble">
+              <span class="role-icon">{{ msg.role === 'user' ? '👤' : '🤖' }}</span>
+              {{ msg.content }}
+            </div>
+          </div>
+        }
+
+        @if (isLoading) {
+          <div class="message ai-message">
+            <div class="message-bubble">
+              🤖 Thinking...
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area">
+        <mat-form-field appearance="outline" class="message-input">
+          <input matInput
+                 [(ngModel)]="newMessage"
+                 (keydown)="onKeyPress($event)"
+                 placeholder="Type a message...">
+        </mat-form-field>
+        <button mat-raised-button color="primary"
+                (click)="sendMessage()"
+                [disabled]="isLoading">
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    }
+
+  </div>
+</div>

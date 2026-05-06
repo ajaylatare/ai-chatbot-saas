@@ -1,0 +1,74 @@
+ 
+<div class="plans-container">
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>🤖 AI Chatbot</h1>
+    <button mat-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon> Back
+    </button>
+  </div>
+
+  <div class="content">
+    <h2 class="page-title">Choose Your Plan</h2>
+
+    @if (message) {
+      <p class="message">{{ message }}</p>
+    }
+
+    <div class="plans-grid">
+
+      <!-- Free Plan -->
+      <mat-card class="plan-card" [class.active-plan]="currentPlan === 'free'">
+        <mat-card-content>
+          <div class="plan-header">
+            <h3>Free Plan</h3>
+            <p class="price">₹0 <span>/month</span></p>
+          </div>
+          <ul class="features">
+            <li><mat-icon>check</mat-icon> GPT-3.5 Model</li>
+            <li><mat-icon>check</mat-icon> 4000 tokens/day</li>
+            <li><mat-icon>check</mat-icon> Basic chat features</li>
+            <li><mat-icon>close</mat-icon> GPT-4 Access</li>
+          </ul>
+          @if (currentPlan === 'free') {
+            <button mat-raised-button disabled class="full-width">
+              Current Plan
+            </button>
+          }
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Pro Plan -->
+      <mat-card class="plan-card pro-card" [class.active-plan]="currentPlan === 'paid'">
+        <mat-card-content>
+          <div class="plan-header">
+            <span class="popular-badge">POPULAR</span>
+            <h3>Pro Plan</h3>
+            <p class="price">₹499 <span>/month</span></p>
+          </div>
+          <ul class="features">
+            <li><mat-icon>check</mat-icon> GPT-4 Model</li>
+            <li><mat-icon>check</mat-icon> Unlimited tokens</li>
+            <li><mat-icon>check</mat-icon> Priority support</li>
+            <li><mat-icon>check</mat-icon> Advanced features</li>
+          </ul>
+          @if (currentPlan === 'free') {
+            <button mat-raised-button color="primary"
+                    class="full-width"
+                    [disabled]="isLoading"
+                    (click)="upgradePlan()">
+              {{ isLoading ? 'Processing...' : 'Upgrade Now' }}
+            </button>
+          }
+          @if (currentPlan === 'paid') {
+            <button mat-raised-button disabled class="full-width">
+              Current Plan ✅
+            </button>
+          }
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </div>
+</div>

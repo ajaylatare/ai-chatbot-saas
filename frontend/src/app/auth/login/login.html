@@ -1,0 +1,40 @@
+<div class="login-container">
+  <mat-card class="login-card">
+
+    <mat-card-header>
+      <mat-card-title>🤖 AI Chatbot</mat-card-title>
+      <mat-card-subtitle>Login to your account</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="email" placeholder="Enter email">
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="password" placeholder="Enter password">
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+ @if (errorMsg) {
+  <p class="error-msg">{{ errorMsg }}</p>
+}
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="full-width" (click)="onLogin()">
+        Login
+      </button>
+    </mat-card-actions>
+
+    <mat-card-footer>
+      <p class="register-link">
+        Don't have an account?
+        <a routerLink="/register">Register here</a>
+      </p>
+    </mat-card-footer>
+
+  </mat-card>
+</div>
