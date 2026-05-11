@@ -1,4 +1,4 @@
- {
+{
   "version": 2,
   "builds": [
     {
@@ -20,7 +20,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/frontend/$1"
     }
   ]
 }
