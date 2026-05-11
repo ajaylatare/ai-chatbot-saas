@@ -8,10 +8,10 @@ const Message = sequelize.define('Message', {
     primaryKey: true,
     autoIncrement: true
   },
-  role: {
-    type: DataTypes.ENUM('user', 'assistant'),
-    allowNull: false
-  },
+ role: {
+  type: DataTypes.STRING,
+  allowNull: false
+},
   content: {
     type: DataTypes.TEXT,
     allowNull: false

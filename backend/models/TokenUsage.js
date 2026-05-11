@@ -12,10 +12,10 @@ const TokenUsage = sequelize.define('TokenUsage', {
     type: DataTypes.INTEGER,
     defaultValue: 0
   },
-  date: {
-    type: DataTypes.DATEONLY,
-    allowNull: false
-  },
+ date: {
+  type: DataTypes.DATEONLY,
+  allowNull: false
+},
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false

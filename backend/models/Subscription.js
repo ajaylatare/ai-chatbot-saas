@@ -9,9 +9,9 @@ const Subscription = sequelize.define('Subscription', {
     autoIncrement: true
   },
   plan: {
-    type: DataTypes.ENUM('free', 'paid'),
-    defaultValue: 'free'
-  },
+  type: DataTypes.STRING,
+  defaultValue: 'free'
+},
   startDate: {
     type: DataTypes.DATE,
     allowNull: false

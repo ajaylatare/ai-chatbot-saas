@@ -21,9 +21,9 @@ const User = sequelize.define('User', {
     allowNull: false
   },
   plan: {
-    type: DataTypes.ENUM('free', 'paid'),
-    defaultValue: 'free'
-  }
+  type: DataTypes.STRING,
+  defaultValue: 'free'
+}
 });
 
 module.exports = User;
