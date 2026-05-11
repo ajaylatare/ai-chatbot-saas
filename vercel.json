@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "outputDirectory": "frontend/dist/frontend",
   "builds": [
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/frontend"
+        "distDir": "dist/frontend/browser"
       }
     },
     {
@@ -21,7 +20,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/dist/frontend/browser/index.html"
+      "dest": "/$1"
     }
   ]
 }
